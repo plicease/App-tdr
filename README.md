@@ -1,4 +1,4 @@
-# tdr ![linux](https://github.com/plicease/App-tdr/workflows/linux/badge.svg)
+# tdr ![static](https://github.com/plicease/App-tdr/workflows/static/badge.svg) ![linux](https://github.com/plicease/App-tdr/workflows/linux/badge.svg)
 
 Legacy Test Driver
 
