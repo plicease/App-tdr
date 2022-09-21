@@ -44,7 +44,6 @@ require 5;              # this funny thing doesn't even do anything but is a
                         # great visual aid for the version impaired.
 
 ## GLOBALS
-$VERSION        = '0.71';  if($VERSION) {}
 $LOG_FILE_NAME  = 'tdr.log';            # where to put the test driver log
 $DATE_CMD       = 'date | cut -c5-';    # date command
 
