@@ -9,30 +9,30 @@
 ## compares it to .eo (expected output)
 ##
 ## History:
-## Date       Author	Commented
-## ----       ------	---------
-## 20 May 96  G. Ollis	started & finished code
-## 22 May 96  G. Ollis	added support for the ERR files
-##			also made the code look nice
-## 23 May 96  G. Ollis	added some command line options
-##			-i for interactive
-##			-v to include warnings
-##			-s to display the signal sent to the test program
+## Date       Author    Commented
+## ----       ------    ---------
+## 20 May 96  G. Ollis  started & finished code
+## 22 May 96  G. Ollis  added support for the ERR files
+##                      also made the code look nice
+## 23 May 96  G. Ollis  added some command line options
+##                      -i for interactive
+##                      -v to include warnings
+##                      -s to display the signal sent to the test program
 ## 24 May 96  G. Ollis  trap the no command line arguments thing
-##			check to see if the program is executable
+##                      check to see if the program is executable
 ## 29 May 96  G. Ollis  treat each argument as a command
-##			rather than whole line is a cmdline
-## 30 May 96  G. Ollis	one line output mode
-## 3  Jun 96  G. Ollis	changed local() to my()
-## 12 Jun 96  G. Ollis	changed $log back to local()
-##			added accounting for the data
-##			append to log file unless using the
-##			fixed the code!  (it works this time)
-## 2  Aug 96  G. Ollis	fixed a few little things, added documentation.
-## 27 Feb 97  G. Ollis	return non zero if a difference is found.
-##			added return value checking.
-##			all the bases are covered in glue now, carefull you
-##			don't fall down.
+##                      rather than whole line is a cmdline
+## 30 May 96  G. Ollis  one line output mode
+## 3  Jun 96  G. Ollis  changed local() to my()
+## 12 Jun 96  G. Ollis  changed $log back to local()
+##                      added accounting for the data
+##                      append to log file unless using the
+##                      fixed the code!  (it works this time)
+## 2  Aug 96  G. Ollis  fixed a few little things, added documentation.
+## 27 Feb 97  G. Ollis  return non zero if a difference is found.
+##                      added return value checking.
+##                      all the bases are covered in glue now, carefull you
+##                      don't fall down.
 ##==============================================================================
 ## see man page for more information.  (or POD below)
 
@@ -40,21 +40,21 @@
 # ABSTRACT: Legacy Test Driver
 # VERSION
 
-require 5;		# this funny thing doesn't even do anything but is a
-			# great visual aid for the version impaired.
+require 5;              # this funny thing doesn't even do anything but is a
+                        # great visual aid for the version impaired.
 
 ## GLOBALS
-$VERSION	= '0.71';  if($VERSION) {}
-$LOG_FILE_NAME	= 'tdr.log';		# where to put the test driver log
-$DATE_CMD	= 'date | cut -c5-';	# date command
+$VERSION        = '0.71';  if($VERSION) {}
+$LOG_FILE_NAME  = 'tdr.log';            # where to put the test driver log
+$DATE_CMD       = 'date | cut -c5-';    # date command
 
 ## options stuff
-$interactive = 0;	# (-i) by default to non-interactive
-$verbose = 0;		# (-v) by default don't print out warnings
-$overWrite = 0;		# (-o) by default, DO NOT overwrite log file
+$interactive = 0;       # (-i) by default to non-interactive
+$verbose = 0;           # (-v) by default don't print out warnings
+$overWrite = 0;         # (-o) by default, DO NOT overwrite log file
 
-$return_value = 0;	# this is the value which will be returned
-			# assuming it is a "normal" execution.
+$return_value = 0;      # this is the value which will be returned
+                        # assuming it is a "normal" execution.
 
 $0 =~ s!^.*/!!g;
 
@@ -106,7 +106,7 @@ sub testProgram { # $progName
   }
 
   ## all the file names are given here relative to the command given to tdr
-  my $root;	($root = $progName) =~ s!\.t$!!;
+  my $root;     ($root = $progName) =~ s!\.t$!!;
   my $fileName = "$root.ao";
   my $errName = "$root.aERR";
   my $oldFileName = "$root.eo";
@@ -140,11 +140,11 @@ sub testProgram { # $progName
   my $errDiff = &checkDiff($errName, $oldErrName, $diffErrName);
   my $retDiff = &checkDiff($retName, $oldRetName, '/dev/null');
 
-  local $log;		# don't tell anyone i used a local here...
+  local $log;           # don't tell anyone i used a local here...
 
-  if(($outDiff==2) or ($errDiff==2) or ($retDiff==2)) {	# diff FAILED!
+  if(($outDiff==2) or ($errDiff==2) or ($retDiff==2)) { # diff FAILED!
     $log = "diff FAILED\n";    
-  } elsif(($outDiff==3) or ($errDiff==3)) {		# no expected output
+  } elsif(($outDiff==3) or ($errDiff==3)) {             # no expected output
     $log = "N/A\n";
 
   } elsif(($outDiff==0) and ($errDiff==0) and 
@@ -165,12 +165,12 @@ sub testProgram { # $progName
 
 format STDOUT =
 @<<<<<<<<<<<<<< @<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-$progName,	$log
+$progName,      $log
 .
 
 format LOG =
 @<<<<<<<<<<<<<<<<<<<<<<< : @<<<<<<<<<<<<<< @*
-&getTime,		    $progName,	    $log
+&getTime,                   $progName,      $log
 .
 
 }
@@ -214,10 +214,10 @@ sub checkDiff { # $actualFileName, $expetedFileName, $diffFileName
     $exitValue = $? >> 8;
     unlink $diffFileName, $fileName if $exitValue == 0;
   }
-  $exitValue;	# 0 = no difference
-		# 1 = difference
-		# 2 = diff failed
-		# 3 = no expected output
+  $exitValue;   # 0 = no difference
+                # 1 = difference
+                # 2 = diff failed
+                # 3 = no expected output
 }
 
 ##==============================================================================
@@ -270,19 +270,19 @@ is named B<fred> or B<fred.t> in this case:
 
 =head2 GENERATED FILES
 
-   fred.ao	- actual output created by tdr
-   fred.aERR	- actual error stream created by tdr
-   fred.diff	- differences (ie. unix diff) between actual and expected
-		  output iff there is a difference
+   fred.ao      - actual output created by tdr
+   fred.aERR    - actual error stream created by tdr
+   fred.diff    - differences (ie. unix diff) between actual and expected
+                  output iff there is a difference
    fred.diffERR - differences between actual and expected error stream
-   fred.aRET	- text file with the return value
+   fred.aRET    - text file with the return value
    tdr.log      - log file for the test driver.  this file is appended to.
 
 =head2 EXISTING FILES
 
-   fred.eo	- expected output created by programmer
-   fred.eERR	- expected error stream created by programmer
-   fred.eRET	- expected return value
+   fred.eo      - expected output created by programmer
+   fred.eERR    - expected error stream created by programmer
+   fred.eRET    - expected return value
 
 note that the diff files are only created if there is a difference.  the
 program warns the user when a file is to be overwriten if -v option used
