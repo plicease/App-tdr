@@ -9,11 +9,11 @@ Legacy Test Driver
 # DESCRIPTION
 
 tdr is a program for testing programs.  tdr executes `cmd` and puts the
-various standard streams in the apropriate places.  `cmd` is intended to
+various standard streams in the appropriate places.  `cmd` is intended to
 be a here document with a .t extension.  If the extension exists, then
 this part of the file name will be removed for the output streams.  If
 there are expected output files present in the current directory, then tdr
-will do a **diff**(1) on the expected and actuall output and inform the
+will do a **diff**(1) on the expected and actually output and inform the
 user that differences were found. 
 
 # FILES
@@ -42,7 +42,7 @@ fred.eRET    - expected return value
 ```
 
 note that the diff files are only created if there is a difference.  the
-program warns the user when a file is to be overwriten if -v option used
+program warns the user when a file is to be overwritten if -v option used
 but doesn't prompt, unless the -i option is specified.  
 
 # OPTIONS
