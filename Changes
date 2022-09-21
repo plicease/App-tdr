@@ -1,6 +1,8 @@
 Revision history for {{$dist->name}}
 
 {{$NEXT}}
-  - initial version
+
+0.71      2022-09-21 04:34:07 -0600
+  - imported from legacy script version 0.71 dated 27 Feb 1997
 
 
